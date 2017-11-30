@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<!-- 交易明细页面 -->
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+		<meta name="format-detection" content="telephone=no">
+		<title>交易明细</title>
+		<link rel="stylesheet" type="text/css" href="/style/css/public.css">
+		<link rel="stylesheet" type="text/css" href="/style/css/account.css">
+		<script type="text/javascript" src="/style/js/adapt.js"></script>
+	</head>
+	<body>
+		<div class="m-fundsflow">
+			<ul class="fundsflow-list">
+				<li class="withdrawal bb-1px">
+					<p class="left f-fl">
+						<span>提现</span>
+						<span class="sm">17-10-02 10:12:00</span>
+					</p>
+					<p class="right f-fr">-¥99.00</p>
+				</li>
+				<li class="pay bb-1px">
+					<p class="left f-fl">
+						<span>消费</span>
+						<span class="sm">17-10-01 16:12:20</span>
+					</p>
+					<p class="right f-fr">-¥1.00</p>
+				</li>
+				<li class="recharge bb-1px">
+					<p class="left f-fl">
+						<span>充值</span>
+						<span class="sm">17-09-28 12:16:56</span>
+					</p>
+					<p class="right f-fr">+¥100.00</p>
+				</li>
+			</ul>
+		</div>
+
+		<script type="text/javascript" src="/style/js/lib/fastclick-jquery.js"></script>
+		<script type="text/javascript">
+			$('.fundsflow-list').on('click', '.withdrawal', function(){
+				location.href = 'jymx_tx.html';
+			});
+
+			$('.fundsflow-list').on('click', '.pay', function(){
+				location.href = 'jymx_xf.html';
+			});
+
+			$('.fundsflow-list').on('click', '.recharge', function(){
+				location.href = 'jymx_cz.html';
+			});
+		</script>
+	</body>
+</html>

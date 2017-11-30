@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<!-- 常见问题页面 -->
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+		<meta name="format-detection" content="telephone=no">
+		<title>常见问题</title>
+		<link rel="stylesheet" type="text/css" href="/style/css/public.css">
+		<link rel="stylesheet" type="text/css" href="/style/css/others.css">
+		<script type="text/javascript" src="/style/js/adapt.js"></script>
+	</head>
+	<body class="bg">
+		<div class="m-ques">
+			<p class="hd f-pr"><a href="tel:400-000-0000"><i class="icon-online"></i><span>联系客服</span></a></p>
+			<ul class="ques-list">
+				<li class="cur">
+					<p class="ques bb-1px">如何计费？</p>
+					<div class="ans bb-1px">这里是解释问题的内容，这里是解释问题的内容，这里是解释问题的内容，这里是解释问题的内容，这里是解释问题的内容，这里是解释问题的内容，这里是解释问题的内。</div>
+				</li>
+				<li>
+					<p class="ques bb-1px">押金规则？</p>
+					<div class="ans bb-1px"></div>
+				</li>
+				<li>
+					<p class="ques bb-1px">在哪里查看押金？</p>
+					<div class="ans bb-1px"></div>
+				</li>
+				<li>
+					<p class="ques bb-1px">呼响共享充电宝支持哪些手机类型？</p>
+					<div class="ans bb-1px"></div>
+				</li>
+				<li>
+					<p class="ques bb-1px">为什么充值了，充电柜却没有送出充电宝？</p>
+					<div class="ans bb-1px"></div>
+				</li>
+			</ul>
+			<ul class="ques-list">
+				<li>
+					<p class="ques bb-1px">借出的充电宝是坏的怎么办？</p>
+					<div class="ans bb-1px"></div>
+				</li>
+				<li>
+					<p class="ques bb-1px">归还充电宝时，为什么插进卡槽又被吐出来了？</p>
+					<div class="ans bb-1px"></div>
+				</li>
+				<li>
+					<p class="ques bb-1px">能否借多个充电宝？</p>
+					<div class="ans bb-1px"></div>
+				</li>
+				<li>
+					<p class="ques bb-1px">页面打开失败怎么办？</p>
+					<div class="ans bb-1px"></div>
+				</li>
+			</ul>
+		</div>
+
+		<script type="text/javascript" src="/style/js/lib/fastclick-jquery.js"></script>
+		<script type="text/javascript">
+			$('.ques-list').on('click', '.ques', function(){
+				$(this).parent('li').toggleClass('cur');
+			})
+		</script>
+		<script src="https://cdn.staticfile.org/jquery/3.2.1/jquery.js"></script>
+		<script src="http://res.wx.qq.com/open/js/jweixin-1.2.0.js"></script>
+		<script>
+		//分享给朋友
+		<?php $this->load->view('share') ?>  
+		</script>
+	</body>
+</html>

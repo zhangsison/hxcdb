@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<!-- 提现前绑定手机号页面 -->
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+		<meta name="format-detection" content="telephone=no">
+		<title>呼响</title>
+		<link rel="stylesheet" type="text/css" href="/style/css/weui.min.css">
+		<link rel="stylesheet" type="text/css" href="/style/css/public.css">
+		<link rel="stylesheet" type="text/css" href="/style/css/account.css">
+		<script type="text/javascript" src="/style/js/adapt.js"></script>
+	</head>
+	<body>
+		<div class="m-bdsjh">
+			<p class="tips bb-1px">为保证您的资金安全，请绑定手机号</p>
+			<ul class="bd-list">
+				<li class="bb-1px">
+					<i class="icon-mobile"></i>
+					<input type="tel" maxlength="11" v-model="mobile" placeholder="请输入手机号">
+					<i v-if="mobile" class="icon-close" @click="emptyMobile()"></i>
+				</li>
+				<li class="bb-1px">
+					<i class="icon-code"></i>
+					<input type="number" v-model="code" placeholder="请输入验证码">
+					<i v-if="code" class="icon-close mr" @click="emptyCode()"></i>
+					<a :class="['code-btn', {disable: codeBtnDisable}]" @click="getCode()" ref="codeBtn">获取验证码</a>
+				</li>
+			</ul>
+			
+			<a v-if="code" class="gray-btn f-pa active" @click="submit()">确定</a>
+			<a v-else class="gray-btn f-pa">确定</a>
+		</div>
+
+		<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/vue"></script>
+		<script type="text/javascript" src="/style/js/lib/weui.min.js"></script>
+
+		<script type="text/javascript">
+			var vm = new Vue({
+				el: '.m-bdsjh',
+				data: {
+					codeBtnDisable: false,
+					mobile: '',
+					code: ''
+				},
+
+				methods: {
+					emptyMobile: function(){
+						this.mobile = '';
+					},
+
+					emptyCode: function(){
+						this.code = '';
+					},
+
+					validate: function(){
+						var regex = /^17[0-9]{1}[0-9]{8}$|^14[0-9]{1}[0-9]{8}$|^13[0-9]{1}[0-9]{8}$|^15[0-9]{1}[0-9]{8}|^18[0-9]{1}[0-9]{8}$/;
+
+						if(this.mobile == '' || this.mobile == undefined){
+							weui.alert('请输入手机号码');
+							return false;
+						}
+						if(!regex.test(this.mobile)){
+							weui.alert('请输入正确的手机号码');
+							return false;
+						}
+						if(this.code == '' || this.code == undefined){
+							weui.alert('请输入验证码');
+							return false;
+						}
+						return true;
+					},
+
+					countDownCode: function(wait){
+						var codeBtn = this.$refs.codeBtn;
+						if(wait == 0){
+							codeBtn.innerText = '获取验证码';
+							this.codeBtnDisable = false;
+						}else{
+							this.codeBtnDisable = true;
+							codeBtn.innerText = wait + 's';
+							wait--;
+							setTimeout(function(){
+								vm.countDownCode(wait);
+							}, 1000);
+						}						
+					},
+
+					getCode: function(){
+						// ajax
+						this.countDownCode(60);
+						weui.alert('请注意查看您的手机', {
+							title: '验证码已发送',
+							buttons: [{
+								label: '我知道了',
+								type: 'primary',
+								onClick: function(){}
+							}]
+						});
+					},
+
+					submit: function(){
+						if(!this.validate()){
+							return false;
+						}
+						// ajax
+						weui.alert('正在为您办理提现', {title: '绑定手机成功'});
+						
+						// 提现成功提示
+						weui.alert('预计0-5个工作日左右到账', {
+							title: '提现成功',
+							buttons: [{
+								label: '确定',
+								type: 'primary',
+								onClick: function(){}
+							}]
+						});
+					}
+				}
+			})
+		</script>
+	</body>
+</html>

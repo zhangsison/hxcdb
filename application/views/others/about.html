@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<!-- 关于我们页面 -->
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+		<meta name="format-detection" content="telephone=no">
+		<title>关于我们</title>
+		<link rel="stylesheet" type="text/css" href="/style/css/public.css">
+		<link rel="stylesheet" type="text/css" href="/style/css/others.css">
+		<script type="text/javascript" src="/style/js/adapt.js"></script>
+	</head>
+	<body>
+		<div class="m-about">
+			<p class="logo"><img src="/style/images/others/icon-logo.png"></p>
+			<p class="text"><span>呼响共享充电宝V1.0</span></p>
+			<div class="bottom f-pa">
+				<p class="service">
+					<a href="javascript:;" class="stip br-1px">服务协议</a>
+					<a href="javascript:;" class="itip">私隐说明</a>
+				</p>
+				<p class="sign">Copyright&copy;2017 呼响科技 保留所有权利</p>
+			</div>
+		</div>
+	</body>
+		<script src="https://cdn.staticfile.org/jquery/3.2.1/jquery.js"></script>
+		<script src="http://res.wx.qq.com/open/js/jweixin-1.2.0.js"></script>
+		<script>
+		//分享给朋友
+		<?php $this->load->view('share') ?>  
+		</script>
+</html>

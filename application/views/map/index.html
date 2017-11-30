@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+		<meta name="format-detection" content="telephone=no">
+		<title>呼响共享充电宝</title>
+		<link rel="stylesheet" type="text/css" href="/style/css/public.css">
+		<link rel="stylesheet" type="text/css" href="/style/css/map.css">
+		<script type="text/javascript" src="/style/js/adapt.js"></script>
+	</head>
+	<body>
+		<div class="m-allpoint">
+			<div class="header f-pr">
+				<i class="icon-avatar f-pa"><img src="<?php echo $headimgurl; ?>" width="30"></i>
+				<i class="icon-search f-pa"></i>
+				<p class="op">
+					<a class="all cur">全部</a>
+					<a class="charger">充电宝</a>
+					<a class="desk-charger">桌面宝</a>
+				</p>
+			</div>
+			<div class="map" id="mapContainer"></div>
+			<div class="bottom">
+				<a class="scan"><i class="icon-scan"></i>扫码充电</a>
+				<i class="icon-loca"></i>
+				<i class="icon-more"></i>
+			</div>
+
+			<!-- 点击标注的时候显示 -->
+			<ul class="charger-list">
+				<li class="border-1px">
+					<i class="icon-starmark f-pa"></i>
+					<div class="addr-detail bb-1px">
+						<p class="logo f-fl"><img src="/style/images/map/icon-logo.png"></p>
+						<div class="info">
+							<p class="name">南山创维广场A座</p>
+							<p class="time"><i class="icon-time"></i>0:00-24:00</p>
+							<p class="addr"><i class="icon-addr"></i>南山高新三道1032号创维广场</p>
+						</div>
+					</div>  
+					<div class="op">
+						<a class="can-borrow br-1px"><i class="icon-canborrow"></i>可借<span>15</span></a>
+						<a class="can-repay"><i class="icon-canrepay"></i>可还<span>6</span></a>
+					</div>
+				</li> 
+			</ul>
+		</div>
+           
+          <!--调用JS接口的页面引入如下JS文件-->
+       
+		<script type="text/javascript" src="http://map.qq.com/api/js?v=2.exp"></script>
+		<script type="text/javascript" src="/style/js/lib/jquery-1.12.4.min.js"></script>
+
+		<script type="text/javascript">
+			$('.icon-more, .icon-search').on('click', function(){
+				location.href = 'http://mpp.sohunjug.com/nearcharger';
+			});
+
+			$('.icon-avatar').on('click', function(){
+				location.href = 'http://mpp.sohunjug.com/center'
+			})
+
+			$('.header .op').on('click', 'a', function(){
+				if(!$(this).hasClass('cur')){
+					$(this).addClass('cur').siblings().removeClass('cur');
+				}
+			});
+
+			var clientWidth = document.documentElement.clientWidth;
+			var x = Math.floor(clientWidth * 104 / 750), y = Math.floor(clientWidth * 118 / 750);
+			var anchor = new qq.maps.Point(x / 2, y),
+				size = new qq.maps.Size(x, y),
+				origin = new qq.maps.Point(0, 0),
+				scaleSize = new qq.maps.Size(x, y),
+				markerIcon = new qq.maps.MarkerImage('/style/images/map/icon-point.png', size, origin, anchor, scaleSize);
+
+			var center = new qq.maps.LatLng(39.916527,116.397128);   // 当前坐标位置，此处随便写的位置
+		    var map = new qq.maps.Map(document.getElementById('mapContainer'), {
+		        center: center,
+		        zoomControl: false,
+				mapTypeId: qq.maps.MapTypeId.ROADMAP,
+		        zoom: 13
+		    });
+		    var infoWin = new qq.maps.InfoWindow({
+		        map: map
+		    });
+
+		    // 充电宝位置
+		    var latlngs = [
+		        new qq.maps.LatLng(39.91474,116.37333),
+		        new qq.maps.LatLng(39.91447,116.39336),
+		        new qq.maps.LatLng(39.90884,116.41306)
+		    ];
+
+		    for(var i = 0;i < latlngs.length; i++) {
+		        (function(n){
+		            var marker = new qq.maps.Marker({
+		                position: latlngs[n],
+		                map: map
+		            });
+		            marker.setIcon(markerIcon);
+		        })(i);
+			}
+
+		</script>
+
+		 <script src="http://res.wx.qq.com/open/js/jweixin-1.2.0.js"></script>
+			<script>
+			    wx.config({
+			        debug: false,
+			        appId: '<?php echo $jssdk['appId']; ?>',
+			        timestamp: <?php echo $jssdk['timestamp']; ?>,
+			        nonceStr: '<?php echo $jssdk['nonceStr']; ?>',
+			        signature: '<?php echo $jssdk['signature']; ?>',
+			        jsApiList: [
+			            // 所有要调用的 API 都要加到这个列表中
+			            'checkJsApi',
+			            'openLocation',
+			            'getLocation',
+			            'onMenuShareTimeline',
+			            'onMenuShareAppMessage',
+			            'scanQRCode'
+			          ]
+			    });
+wx.ready(function () {
+	//分享给朋友
+    wx.onMenuShareAppMessage({
+      title: '123',
+      desc: '123',
+      link: 'http://mpp.sohunjug.com/home',
+      imgUrl: 'http://images.cnitblog.com/i/340216/201404/301756448922305.jpg',
+
+      success: function (res) {
+		
+      },
+      cancel: function (res) {
+        alert('很遗憾，您已取消分享');
+      },
+     
+    });
+
+	//分享到朋友圈
+    wx.onMenuShareTimeline({
+      
+    });
+
+wx.checkJsApi({
+    jsApiList: [
+        'getLocation'
+    ],
+    success: function (res) {
+        // alert(JSON.stringify(res));
+        // alert(JSON.stringify(res.checkResult.getLocation));
+        if (res.checkResult.getLocation == false) {
+            alert('你的微信版本太低，不支持微信JS接口，请升级到最新的微信版本！');
+            return;
+        }
+    }
+});
+wx.getLocation({
+    success: function (res) {
+        var latitude = res.latitude; // 纬度，浮点数，范围为90 ~ -90
+        var longitude = res.longitude; // 经度，浮点数，范围为180 ~ -180。
+        var speed = res.speed; // 速度，以米/每秒计
+        var accuracy = res.accuracy; // 位置精度
+
+        alert(latitude+'纬度'+longitude+'经度'+speed+'速度'+accuracy+'位置精度');
+    },
+    cancel: function (res) {
+        alert('用户拒绝授权获取地理位置');
+    }
+});
+
+
+$('.scan').on('click', function(){
+				
+wx.scanQRCode({
+
+    needResult: 0, // 默认为0，扫描结果由微信处理，1则直接返回扫描结果，
+
+    scanType: ["qrCode","barCode"], // 可以指定扫二维码还是一维码，默认二者都有
+
+    success: function (res) {
+
+    var result = res.resultStr; // 当needResult 为 1 时，扫码返回的结果
+
+}
+
+});
+
+
+});
+
+
+
+
+});
+</script>
+	</body>
+</html>

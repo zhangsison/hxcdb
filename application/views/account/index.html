@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+		<meta name="format-detection" content="telephone=no">
+		<title>个人中心</title>
+		<link rel="stylesheet" type="text/css" href="/style/css/public.css">
+		<link rel="stylesheet" type="text/css" href="/style/css/account.css">
+		<script type="text/javascript" src="/style/js/adapt.js"></script>
+	</head>
+	<body>
+		<div class="m-index">
+			<div class="hd f-pr">
+				<p class="avatar f-pa"><img src="<?php echo $headimgurl; ?>"></p>
+				<p class="account-id f-pa"><?php echo $nickname; ?></p>
+				<ul class="amount-list">
+					<li>
+						<p class="amount">¥109.00</p>
+						<p>余额</p>
+					</li>
+					<!-- 已交押金 -->
+					<!-- <li>
+						<p class="deposit">¥100.00</p>
+						<p>押金</p>
+					</li> -->
+					<li class="undeposit">
+						<p class="unpay">交押金</p>
+						<p>您尚未交押金</p>
+					</li>
+				</ul>
+				<div class="btn-box clearfix">
+					<a class="recharge f-fl">充值</a>
+					<a class="withdrawal f-fr">提现</a>
+				</div>
+			</div>
+			<ul class="account-list">
+				<li>
+					<i class="icon-1"></i>
+					<span>我的订单</span>
+				</li>
+				<li>
+					<i class="icon-2"></i>
+					<span>交易明细</span>
+				</li>
+				<li>
+					<i class="icon-3"></i>
+					<span>优惠券</span>
+				</li>
+				<li>
+					<i class="icon-4"></i>
+					<span>常见问题</span>
+				</li>
+				<li>
+					<i class="icon-5"></i>
+					<span>关于我们</span>
+				</li>
+			</ul>
+		</div>
+
+		<script type="text/javascript" src="/style/js/lib/fastclick-jquery.js"></script>
+		<script type="text/javascript">
+			$('.account-list li:nth-child(1)').on('click', function(){
+				location.href = 'http://mpp.sohunjug.com/center/order';
+			});
+
+			$('.account-list li:nth-child(2)').on('click', function(){
+				location.href = 'http://mpp.sohunjug.com/center/fundsflow';
+			});
+
+			$('.account-list li:nth-child(3)').on('click', function(){
+				location.href = 'http://mpp.sohunjug.com/center/coupon';
+			});
+
+			$('.account-list li:nth-child(4)').on('click', function(){
+				location.href = 'http://mpp.sohunjug.com/others/question';
+			});
+
+			$('.account-list li:nth-child(5)').on('click', function(){
+				location.href = 'http://mpp.sohunjug.com/others/about';
+			});
+
+			$('.recharge').on('click', function(){
+				location.href = 'http://mpp.sohunjug.com/center/recharge';
+			});
+
+			$('.withdrawal').on('click', function(){
+				location.href = 'http://mpp.sohunjug.com/center/withdrawal';
+			});
+
+			$('.undeposit').on('click', function(){
+				location.href = 'http://mpp.sohunjug.com/center/czyj';
+			})
+		</script>
+	</body>
+</html>

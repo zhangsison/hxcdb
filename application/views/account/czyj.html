@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+		<meta name="format-detection" content="telephone=no">
+		<title>充值押金</title>
+		<link rel="stylesheet" type="text/css" href="/style/css/public.css">
+		<link rel="stylesheet" type="text/css" href="/style/css/account.css">
+		<script type="text/javascript" src="/style/js/adapt.js"></script>
+	</head>
+	<body>
+		<div class="m-czyj">
+			<div class="hd">
+				<p class="tips">租借充电宝需要先充值押金</p>
+				<p class="amount"><span>100</span>元</p>
+				<p class="check clearfix">
+					<span class="f-fl"><i class="icon-wechat"></i>微信支付</span>
+					<i class="icon-check f-fr"></i>
+				</p>
+			</div>
+			<div class="ques-ans">
+				<p class="ques"><i class="icon-ques"></i>如何退押金</p>
+				<p class="ans">进入“呼响共享充电宝”公众号-个人中心-提现。预计到账时间为0-5个工作日左右，原路退回</p>
+			</div>
+			<a class="fill-btn f-pa">充值押金</a>
+		</div>
+	</body>
+	<script src="https://cdn.staticfile.org/jquery/3.2.1/jquery.js"></script>
+
+		 <script src="http://res.wx.qq.com/open/js/jweixin-1.2.0.js"></script>
+			<script>
+			    wx.config({
+			        debug: false,
+			        appId: '<?php echo $jssdk['appId']; ?>',
+			        timestamp: <?php echo $jssdk['timestamp']; ?>,
+			        nonceStr: '<?php echo $jssdk['nonceStr']; ?>',
+			        signature: '<?php echo $jssdk['signature']; ?>',
+			        jsApiList: [
+			            // 所有要调用的 API 都要加到这个列表中
+			            'checkJsApi',
+			            'onMenuShareTimeline',
+			            'onMenuShareAppMessage',
+			            'chooseWXPay'
+			           ]
+			        });
+wx.ready(function () {
+
+
+$('.f-pa').on('click', function(){
+				
+wx.chooseWXPay({
+
+    timestamp: 0, // 支付签名时间戳，注意微信jssdk中的所有使用timestamp字段均为小写。但最新版的支付后台生成签名使用的timeStamp字段名需大写其中的S字符
+
+    nonceStr: '123', // 支付签名随机串，不长于 32 位
+
+    package: '123', // 统一支付接口返回的prepay_id参数值，提交格式如：prepay_id=***）
+
+    signType: '123', // 签名方式，默认为'SHA1'，使用新版支付需传入'MD5'
+
+    paySign: '123', // 支付签名
+
+    success: function (res) {
+
+        // 支付成功后的回调函数
+
+    }
+
+});
+
+
+});
+
+
+
+
+});
+</script>
+</html>

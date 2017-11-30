@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+		<meta name="format-detection" content="telephone=no">
+		<title>位置</title>
+		<link rel="stylesheet" type="text/css" href="/style/css/public.css">
+		<link rel="stylesheet" type="text/css" href="/style/css/map.css">
+		<script type="text/javascript" src="/style/js/adapt.js"></script>
+	</head>
+	<body>
+		<div class="header f-pa">
+			<div class="search-bar border-1px">
+				<i class="icon-blue-search f-pa"></i>
+				<input type="text" class="search pl f-pa" placeholder="搜索地点">
+			</div>
+		</div>
+		<div class="m-location">
+			<div class="map" id="mapContainer"></div>
+			<ul class="loca-list">
+				<li class="lg bb-1px">腾讯科技（深圳）有限公司（飞亚达大厦）<i class="icon-choose f-pa"></i></li>
+				<li class="lg bb-1px">腾讯科技（深圳）有限公司（飞亚达大厦）</li>
+				<li class="bb-1px">
+					<p>飞亚达科技大厦</p>
+					<p class="sm">广东省深圳市南山区高新南一道</p>
+				</li>
+				<li class="bb-1px">
+					<p>飞亚达科技大厦</p>
+					<p class="sm">广东省深圳市南山区高新南一道</p>
+				</li>
+				<li class="bb-1px">
+					<p>飞亚达科技大厦</p>
+					<p class="sm">广东省深圳市南山区高新南一道</p>
+				</li>
+			</ul>
+		</div>
+
+		<script charset="utf-8" src="http://map.qq.com/api/js?v=2.exp"></script>
+		<script type="text/javascript">
+			var center = new qq.maps.LatLng(22.549795, 113.961094);    // 测试经纬度
+			var map = new qq.maps.Map(document.getElementById('mapContainer'), {
+				center: center,
+				zoomControl: false,
+				mapTypeId: qq.maps.MapTypeId.ROADMAP,
+				zoom: 13
+			});
+			var marker = new qq.maps.Marker({
+		        position: center,
+		        map: map
+		    });
+		</script>
+	</body>
+</html>

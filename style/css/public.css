@@ -1,0 +1,41 @@
+/* reset */
+a, abbr, acronym, address, applet, article, aside, audio, b, big, blockquote, body, canvas, caption, center, cite, code, dd, del, details, dfn, div, dl, dt, em, embed, fieldset, figcaption, figure, footer, form, h1, h2, h3, h4, h5, h6, header, hgroup, html, i, iframe, img, ins, kbd, label, legend, li, mark, menu, nav, object, ol, output, p, pre, q, ruby, s, samp, section, small, span, strike, strong, sub, summary, sup, table, tbody, td, tfoot, th, thead, time, tr, tt, u, ul, var, video { margin: 0; padding: 0; border: 0; font: inherit; font-size: 100%; vertical-align: baseline }
+ol, ul { list-style: none; }
+table { border-collapse: collapse; border-spacing: 0; }
+blockquote, q { quotes: none; }
+a img { border: none; }
+article, aside, details, figcaption, figure, footer, header, hgroup, main, menu, nav, section, summary { display: block; }
+body, html { position: relative; height: 100%; width: 100%; overflow: hidden; font: 16px/1.5 'Helvetica Neue', Helvetica, STHeiTi, sans-serif; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; -webkit-overflow-scrolling: touch; }
+a { text-decoration: none; }
+a, div, p { -webkit-box-sizing: border-box; box-sizing: border-box; }
+input, select, textarea, a { outline: none; }
+
+/* public */
+.clearfix:after { visibility: hidden; display: block; font-size: 0; content: '.'; clear: both; height: 0; }
+.f-fl { float: left; }
+.f-fr { float: right; }
+.f-pr { position: relative; }
+.f-pa { position: absolute; }
+.bg { background-color: #fff; }
+.border-1px, .bb-1px, .bt-1px, .bl-1px, .br-1px { position: relative; border: none; }
+/*.border-1px:after { content: ''; position: absolute; }*/
+/*.bb-1px:after, .bt-1px:after, .bl-1px:aftre, .br-1px:after { background-color: #e5e5e5; content: ''; position: absolute; }*/
+.bb-1px:after, .bt-1px:after { left: 0; width: 100%; height: 1px; transform-origin: 0 0; background-color: #e5e5e5; content: ''; position: absolute; }
+.bb-1px:after { bottom: 0; }
+.bt-1px:after { top: 0; }
+.bl-1px:after, .br-1px:after { box-sizing: border-box; top: 0; width: 1px; height: 100%; transform-origin: 0 0; background-color: #e5e5e5; content: ''; position: absolute; }
+.bl-1px:after { left: 0; }
+.br-1px:after { right: 0; }
+.border-1px:after { box-sizing: border-box; left: 0; top: 0; width: 100%; height: 100%; border: 1px solid #e5e5e5; content: ''; position: absolute; }
+
+/* 设备像素比 */
+@media only screen and (-webkit-min-device-pixel-ratio:3.0), only screen and (min-resolution:3dppx) {
+	.bb-1px:after, .bt-1px:after { transform: scaleY(.333); }
+	.bl-1px:after, .br-1px:after { transform: scaleX(.333); }
+	.border-1px:after { width: 300%; height: 300%; transform: scale(.333); transform-origin: 0 0; }
+}
+@media only screen and (-webkit-min-device-pixel-ratio:2.0), only screen and (min-resolution:2dppx) {
+	.bb-1px:after, .bt-1px:after { transform: scaleY(.5); }
+	.bl-1px:after, .br-1px:after { transform: scaleX(.5); }
+	.border-1px:after { width: 200%; height: 200%; transform: scale(.5); transform-origin: 0 0; }
+}

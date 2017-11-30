@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+	<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+		<meta name="format-detection" content="telephone=no">
+		<title>充值</title>
+		<link rel="stylesheet" type="text/css" href="/style/css/weui.min.css">
+		<link rel="stylesheet" type="text/css" href="/style/css/public.css">
+		<link rel="stylesheet" type="text/css" href="/style/css/account.css">
+		<script type="text/javascript" src="/style/js/adapt.js"></script>
+	</head>
+	<style type="text/css">
+		.weui-icon_toast.weui-loading{ margin: 40px 0 0; }
+	</style>
+	<body>
+		<div class="m-recharge">
+			<p class="text">充值金额</p>
+			<ul class="relist clearfix">
+				<li class="cur">充<span>5</span>元</li>
+				<li>充<span>20</span>元</li>
+				<li>充<span>50</span>元</li>
+				<li>充<span>100</span>元</li>
+			</ul>
+			<p class="agree"><i class="icon-check-sm"></i>点击支付表示已阅读并同意<span>使用条款</span>和<span>充值协议</span></p>
+			<a class="fill-btn f-pa">立即支付</a>
+		</div>
+
+		<script type="text/javascript" src="/style/js/lib/fastclick-jquery.js"></script>
+		<script type="text/javascript" src="/style/js/lib/weui.min.js"></script>
+
+		<script type="text/javascript">
+			$('.fill-btn').on('click', function(){
+				// 支付前loading状态框
+				// var loading = weui.loading();
+				// setTimeout(function(){
+				// 	loading.hide();
+				// }, 3000);
+
+				// 支付失败框
+				// weui.alert('请前往个人中心查看', {
+				// 	title: '支付失败',
+				// 	buttons: [{
+				// 		label: '我知道了',
+				// 		type: 'primary'
+				// 	}]
+				// });
+
+				// 充值成功框
+				// weui.alert('请前往个人中心查看', {
+				// 	title: '充值成功',
+				// 	buttons: [{
+				// 		label: '确定',
+				// 		type: 'primary',
+				// 		onClick: function(){}
+				// 	}]
+				// });
+
+				// 充值提示
+				weui.confirm('充值余额前需要先交100元押金', {
+					title: '充值提示',
+					buttons: [{
+						label: '取消',
+						type: 'default'
+					}, {
+						label: '充值押金',
+						type: 'primary',
+						onClick: function(){}
+					}]
+				});
+			});
+
+			$('.relist').on('click', 'li', function(){
+				if(!$(this).hasClass('cur')){
+					$(this).addClass('cur').siblings().removeClass('cur');
+				}
+			})
+		</script>
+	</body>
+</html>

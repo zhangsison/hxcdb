@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+		<meta name="format-detection" content="telephone=no">
+		<title>提现</title>
+		<link rel="stylesheet" type="text/css" href="/style/css/weui.min.css">
+		<link rel="stylesheet" type="text/css" href="/style/css/public.css">
+		<link rel="stylesheet" type="text/css" href="/style/css/account.css">
+		<script type="text/javascript" src="/style/js/adapt.js"></script>
+	</head>
+	<body>
+		<div class="m-withdrawal">
+			<div class="hd">
+				<ul class="wlist">
+					<li class="clearfix">
+						<span class="f-fl">呼响余额</span>
+						<span class="f-fr">99元</span>
+					</li>
+					<li class="clearfix">
+						<span class="f-fl">押金金额</span>
+						<span class="f-fr">100元</span>
+					</li>
+					<li class="clearfix">
+						<span class="f-fl">可退金额</span>
+						<span class="f-fr">199元</span>
+					</li>
+					<li class="clearfix">
+						<span class="f-fl">退款方式</span>
+						<span class="back-way f-fr">原路退回(0-5个工作日)<br>依赖于支付渠道的处理时间</span>
+					</li>
+				</ul>
+			</div>
+			<p class="tips"><i class="icon-ques-orange"></i><span>不退押金下次直接租借更方便哦~</span></p>
+			<a class="nofill-btn withdrawal-btn f-pa">提现</a>
+			<a class="fill-btn f-pa">不提了</a>
+		</div>
+
+		<script type="text/javascript" src="/style/js/lib/fastclick-jquery.js"></script>
+		<script type="text/javascript" src="/style/js/lib/weui.min.js"></script>
+
+		<script type="text/javascript">
+			$('.withdrawal-btn').on('click', function(){
+				weui.confirm('确认要将押金和余额提现吗？', {
+					title: '提现金额：199元',
+					buttons: [{
+						label: '取消',
+						type: 'default'
+					}, {
+						label: '确认提现',
+						type: 'primary',
+						onClick: function(){
+							// 提现成功提示
+							weui.alert('预计0-5个工作日左右到账', {
+								title: '提现成功',
+								buttons: [{
+									label: '确定',
+									type: 'primary',
+									onClick: function(){}
+								}]
+							});
+						}
+					}]
+				});
+			})
+		</script>
+	</body>
+</html>
