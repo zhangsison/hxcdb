@@ -10,6 +10,15 @@ public function __construct() {
 
             }
 
+
+    public function index(){
+          $access_token=$this->Config_model->token();
+      $token=$this->Config_model->shanchu($access_token);
+
+     var_dump($token);
+    }
+
+
    public function caidan(){
            
             $access_token=$this->Config_model->token();

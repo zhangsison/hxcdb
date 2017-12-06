@@ -78,6 +78,14 @@ return $jsonmenu;
 
 
 
+public function shanchu($access_token){
+$url = "https://api.weixin.qq.com/cgi-bin/menu/delete?access_token=".$access_token;
+ $jsonmenu=$this->https_request($url);
+
+return $jsonmenu;
+}
+
+
 
 
 
